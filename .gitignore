@@ -6,3 +6,6 @@
 /src/HelloDemo/vendor/
 /src/HelloDemo/HelloDemo.exe
 /src/HelloDemo/glide.lock
+/src/DemoApp/vendor/
+/src/DemoApp/glide.lock
+/src/DemoApp/main

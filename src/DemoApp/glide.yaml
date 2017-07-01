@@ -1,0 +1,27 @@
+package: DemoApp
+import:
+- package: github.com/Shopify/sarama
+  version: ^1.12.0
+- package: github.com/gocql/gocql
+  version: pre-node-events
+- package: github.com/golang/protobuf
+  version: master
+  subpackages:
+  - proto
+  - ptypes/empty
+- package: github.com/hashicorp/consul
+  version: ^0.8.3
+  subpackages:
+  - api
+- package: github.com/mattes/migrate
+  version: ^3.0.1
+  subpackages:
+  - database/cassandra
+  - source/file
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: google.golang.org/grpc
+  version: ^1.4.0
+  subpackages:
+  - reflection

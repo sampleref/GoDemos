@@ -30,3 +30,4 @@ glide update -> to update later on
 To use protoc/grpc
 - Creates extra proto folder within proto => protoc --go_out=plugins=grpc:./proto/ ./proto/*.proto
 - Creates .go in same proto file folder => protoc --go_out=plugins=grpc:.\ .\proto\*.proto
+                                 linux => protoc --go_out=plugins=grpc:./ ./proto/*.proto
