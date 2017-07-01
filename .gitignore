@@ -1,0 +1,10 @@
+
+/.idea/
+/bin/
+/pkg/
+/src/github.com/
+/src/golang.org/
+/src/google.golang.org/
+/src/HelloDemo/vendor/
+/src/HelloDemo/HelloDemo.exe
+/src/HelloDemo/glide.lock

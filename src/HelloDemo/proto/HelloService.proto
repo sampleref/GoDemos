@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+
+package service.Hello;
+
+message ServiceHelloRequest {
+    string sayHelloTo = 1;
+};
+
+message ServiceHelloResponse {
+    string helloMessage = 1;
+};
+
+service HelloService {
+    rpc getHelloMessage (ServiceHelloRequest) returns (ServiceHelloResponse);
+};
