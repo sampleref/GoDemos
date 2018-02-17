@@ -1,4 +1,7 @@
-package entity
+package common
+
+
+var ResponseChannels = make(map[float64]chan Response)
 
 // Error that can be filled in response
 type Error struct {
@@ -11,7 +14,9 @@ type Error struct {
 type Response struct {
 	Jsonrpc string
 	Id      float64
+	Method	string
 	Result  map[string]string // should change if result has no several form
 	Params  map[string]string
 	Error   *Error
 }
+
