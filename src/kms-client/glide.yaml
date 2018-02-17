@@ -1,0 +1,4 @@
+package: kms-client
+import:
+- package: golang.org/x/net/websocket
+- package: github.com/ybbus/jsonrpc
