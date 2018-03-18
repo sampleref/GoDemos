@@ -1,0 +1,4 @@
+package: FfmpegUtil
+import:
+  - package: github.com/giorgisio/goav
+    version: master
