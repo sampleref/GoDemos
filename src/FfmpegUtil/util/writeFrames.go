@@ -16,11 +16,12 @@ package util
 
 void SaveFrame(AVFrame *pFrame, int width, int height, int iFrame, char *path) {
   FILE *pFile;
-  char szFilename[32];
+  char szFilename[256];
   int  y;
 
   // Open file
-  sprintf(szFilename, "drone_video_%d.ppm", iFrame);
+  sprintf(szFilename, path, iFrame);
+  printf("Frame path is %s ", szFilename);
   pFile=fopen(szFilename, "wb");
   if(pFile==NULL)
     return;
