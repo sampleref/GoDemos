@@ -15,6 +15,7 @@ import "C"
 import (
 	"fmt"
 	"unsafe"
+	"FfmpegUtil/util"
 )
 
 type (
@@ -56,7 +57,7 @@ func (ctxt *Context) NbStreams() uint {
 	return uint(ctxt.nb_streams)
 }
 
-func (avs *Stream) Codec() *CodecContext {
+func (avs *Stream) CodecContext() *CodecContext {
 	return (*CodecContext)(unsafe.Pointer(avs.codec))
 }
 
@@ -76,9 +77,12 @@ func (ctxt *CodecContext) CodecType() MediaType {
 	return (MediaType)(ctxt.codec_type)
 }
 
+/*func (ctxt *CodecContext) CodecName() string {
+	return C.GoString(ctxt.codec_name)
+}*/
+
 func main() {
 
-	fmt.Println("Hello World");
 	source := "rtsp://localhost:9990/test.mp4"
 
 	fmt.Println("Valid source: ", isValidStream(source))
@@ -89,6 +93,7 @@ func isValidStream(source string) bool {
 
 	// Register all formats and codecs
 	AvRegisterAll()
+	util.WriteFrames("/home/user/tools/ffserver/drone_video.mp4", "/home/user/tools/ffserver/drone_video%d.ppm")
 
 	ctxtFormat := AvformatAllocContext()
 
@@ -117,13 +122,13 @@ func isValidStream(source string) bool {
 	for i := 0; i < int(n); i++ {
 		fmt.Println("Stream Number:", i)
 
-		if (*CodecContext)(s.Codec()) != nil {
-			codec := s.Codec()
+		if (*CodecContext)(s.CodecContext()) != nil {
+			codec := s.CodecContext()
 			codecContext := (*CodecContext)(unsafe.Pointer(&codec))
 			fmt.Println("Codec ID: ", codecContext.CodecId())
 			fmt.Println("Profile:", codecContext.Profile())
 			//codecActual := codecContext.Codec()
-			//fmt.Println("Codec Name:", codecActual.CodecName())
+			//fmt.Println("Codec Name:", codecContext.CodecName())
 			fmt.Println("Media Type Name:", codecContext.CodecType())
 		}
 	}
